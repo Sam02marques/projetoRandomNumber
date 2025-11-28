@@ -1,10 +1,25 @@
 
 alert("Boas vindas ao jogo do número secreto");
+let maxNumber = 10;
 let numberAttempt = 1;
-let  secretNumber =  Math.floor(Math.random() * 1000) + 1;// FUNÇÃO NATIVA QUE GERA UM NUMERO INTEIRO ALEATÓRIO INCLUINDO O VALOR MÁXIMO E MÍNIMO;
+let  secretNumber = generateRandomNumber();
 let input = document.querySelector('#meu-chute');
 let textoNaTela = document.querySelector('#texto-dica');
 let btnReiniciar = document.querySelector('#btn-reiniciar');
+
+// GERA NÚMERO BASEADO NO NÍVEL ATUAL
+function generateRandomNumber(){
+    return Math.floor(Math.random() * maxNumber) + 1;
+}
+
+// FUNÇÃO DOS BOTÕES DE NÍVEL
+function changeLevel(newMax) {
+    maxNumber = newMax;
+    restart(); // Já começa um jogo novo assim que troca o nível
+}
+
+
+
 // FUNÇÃO QUE PEDE AO USUARIO UM NUMERO ALEATORIO, E A PARTIR DISSO OFERECE DICAS DE QUAL NUMERO É
 function identifier(){
     let attempt = Number(input.value); // PEGA O NÚMERO DA CAIXA
@@ -13,6 +28,12 @@ function identifier(){
             alert("Digite um número");
             return;
         }
+
+        if (attempt > maxNumber) {
+        alert(`Atenção: O nível atual vai apenas até ${maxNumber}!`);
+        return;
+        }
+
 
         if (attempt === secretNumber){ //OPERADOR TERNÁRIO QUE CRIA UMA CONDIÇÃO DE FRASE PARA QUANDO AS TENTATIVAS FOREM MAIORES QUE 1 E IGUAIS A 1
             let attemptPhrase = numberAttempt > 1? "tentativas" : "tentativa, IMPRESSIONANTE!";
@@ -42,10 +63,10 @@ function limparInput() {
     input.focus();
 }
 
-function reiniciar() {
-    secretNumber = Math.floor(Math.random() * 1000) + 1;
+function restart() {
+    secretNumber = generateRandomNumber();
     numberAttempt = 1;
-    textoNaTela.innerText = "Tente adivinhar o novo número...";
+    textoNaTela.innerText = `Nível selecionado: 1 a ${maxNumber}. Tente acertar!`;
     btnReiniciar.disabled = true;
     limparInput();
 }
@@ -54,5 +75,5 @@ function reiniciar() {
 
 
 
-identifier();
+restart();
 

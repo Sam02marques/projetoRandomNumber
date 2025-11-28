@@ -4,19 +4,39 @@
 <head>
   <meta charset="UTF-8" />
   <title>Jogo do número secreto</title>
-  <link rel="stylesheet" href="main.css"/>
+  <link rel="stylesheet" href="src/css/main.css"/>
+  <link rel="stylesheet" href="src/css/footer.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <div id="root"></div>
   
   
   <div class="container-jogo">
-    <img id="imagem-robo" src="img/robo.png" style="width: 200px;"> <h2 id="texto-dica">Tente adivinhar o número...</h2>
-    
+    <img id="imagem-robo" src="src/img/robo.png" style="width: 200px;"> <h2 id="texto-dica">Tente adivinhar o número...</h2>
     <input type="number" id="meu-chute" placeholder="Digite aqui">
-    <button onclick="identifier()">CHUTAR</button> <button onclick="reiniciar()" id="btn-reiniciar" disabled>JOGAR DE NOVO</button>
+    <button onclick="identifier()">CHUTAR</button> <button onclick="restart()" id="btn-reiniciar" disabled>JOGAR DE NOVO</button>
   </div>
-  <script src= "game.js"></script>
-  <script src="button.js"></script>
+
+  
+  <div id="niveis-dificuldade">
+    <button onclick="changeLevel(10)">Iniciante</button>
+    <button onclick="changeLevel(100)">Intermediário</button>
+    <button onclick="changeLevel(1000)">Avançado</button>
+</div>
+  
+  
+
+  <footer>
+    <p>&copy; 2024 Samuel Marques De Araujo. Todos os direitos reservados.</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/samuel-marques-90b818284/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/sam_marques9/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://github.com/Sam02marques" target="_blank"><i class="fa-brands fa-github"></i></a>
+    </div>
+  </footer>
+  
+  <script src= "src/js/game.js"></script>
+  <script src="src/js/button.js"></script>
 </body>
 </html>
