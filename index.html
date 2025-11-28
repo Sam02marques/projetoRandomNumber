@@ -10,9 +10,11 @@
   <div id="root"></div>
   
   
-  <img src="img/robo.png" alt="Robô">
-  <div id="botao">
-    <button>Tentar Novamente</button>
+  <div class="container-jogo">
+    <img id="imagem-robo" src="img/robo.png" style="width: 200px;"> <h2 id="texto-dica">Tente adivinhar o número...</h2>
+    
+    <input type="number" id="meu-chute" placeholder="Digite aqui">
+    <button onclick="identifier()">CHUTAR</button> <button onclick="reiniciar()" id="btn-reiniciar" disabled>JOGAR DE NOVO</button>
   </div>
   <script src= "game.js"></script>
   <script src="button.js"></script>
